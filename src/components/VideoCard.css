@@ -1,0 +1,161 @@
+.vcard {
+  display: block;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+}
+
+.vcard-media {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0c0e15;
+  border: 1px solid var(--line);
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+    border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.vcard-poster,
+.vcard-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vcard-video {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+}
+
+.vcard.is-playing .vcard-video { opacity: 1; }
+
+.vcard-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 6, 10, 0.5) 0%, transparent 30%, transparent 55%, rgba(5, 6, 10, 0.85) 100%);
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+.vcard:hover .vcard-shade { opacity: 0.65; }
+
+.vcard-index {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  z-index: 4;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--text-1);
+  font-variant-numeric: tabular-nums;
+}
+
+.vcard-play {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  color: var(--text-0);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.vcard-play i {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+.vcard-play i::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 6px solid var(--cyan);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  margin-left: 1px;
+}
+.vcard:hover .vcard-play {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vcard:hover .vcard-media {
+  transform: translateY(-6px);
+  border-color: rgba(0, 229, 255, 0.45);
+  box-shadow:
+    0 26px 60px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 229, 255, 0.18),
+    0 0 50px rgba(124, 58, 237, 0.22);
+}
+
+/* 信息条：标题在上，分类在下，避免窄列时互相挤压截断 */
+.vcard-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 11px;
+  padding: 0 2px;
+  min-width: 0;
+}
+
+.vcard-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-0);
+  transition: color 0.25s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.vcard:hover .vcard-title { color: var(--cyan); }
+
+.vcard-cat {
+  font-size: 11.5px;
+  color: var(--text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 小卡（归档） */
+.vcard.small .vcard-media {
+  border-radius: 12px;
+}
+.vcard.small .vcard-info {
+  margin-top: 7px;
+  gap: 0;
+}
+.vcard.small .vcard-title {
+  font-size: 12px;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.35;
+}
+.vcard.small .vcard-cat {
+  font-size: 10.5px;
+  opacity: 0.85;
+}
+.vcard.small:hover .vcard-media {
+  transform: translateY(-4px);
+}
+.vcard.small .vcard-play {
+  font-size: 10px;
+  left: 10px;
+  bottom: 10px;
+}

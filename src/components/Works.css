@@ -1,0 +1,42 @@
+.works {
+  background: var(--bg-0);
+  align-items: flex-start;
+  padding-top: 92px;
+}
+
+.works-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding-top: 26px;
+}
+
+.works-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+.works-desc {
+  max-width: 380px;
+  font-size: 14.5px;
+  line-height: 1.8;
+  padding-bottom: 6px;
+  text-align: right;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 26px;
+  max-width: 1520px;
+  width: 100%;
+}
+
+/* 用视口高度约束卡片，保证 4 张大卡永远完整落在一屏内 */
+.works-grid .vcard {
+  width: min(100%, calc(56vh * 0.5625));
+  justify-self: center;
+}
+
