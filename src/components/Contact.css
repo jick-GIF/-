@@ -94,6 +94,12 @@
 }
 .social-links a:hover::after { width: 100%; }
 
+.contact-resume {
+  margin-top: 10px;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+}
+
 .contact-footer {
   position: absolute;
   bottom: 0;

@@ -1,7 +1,7 @@
 import { WORKS } from '../data/works.js'
 import './Contact.css'
 
-export default function Contact() {
+export default function Contact({ onResume }) {
   return (
     <section id="contact" className="snap-section contact">
       <div className="grid-bg" />
@@ -44,6 +44,10 @@ export default function Contact() {
             <a href="#" onClick={(e) => e.preventDefault()}>微信 / WeChat</a>
             <a href="#" onClick={(e) => e.preventDefault()}>小红书</a>
           </div>
+
+          <button className="btn btn-ghost contact-resume" onClick={onResume}>
+            查看简历 / RESUME ↗
+          </button>
         </div>
       </div>
 

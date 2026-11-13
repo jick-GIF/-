@@ -6,7 +6,7 @@ const WORK_SOURCE = [
   {
     id: 'w01',
     file: '05.mp4',
-    title: '假死出逃',
+    title: '假死出逃3',
     category: 'AI 短剧 · 夜景人物',
     year: '2026',
     desc: '城市夜色中的人物侧脸，冷暖光源对撞，用一句台词完成情绪铺垫。',
@@ -78,7 +78,7 @@ const WORK_SOURCE = [
   {
     id: 'w09',
     file: '4.mp4',
-    title: '假死出逃2',
+    title: '假死出逃1',
     category: 'AI 场景 · 环境光影',
     year: '2026',
     desc: '窗边环境空镜，暖光穿透玻璃，斑驳地板承担年代感的叙事。',
@@ -87,7 +87,7 @@ const WORK_SOURCE = [
   {
     id: 'w10',
     file: '5.mp4',
-    title: '假死出逃',
+    title: '假死出逃2',
     category: 'AI 短剧 · 道具叙事',
     year: '2026',
     desc: '咖啡桌与展览邀请卡同框，午后侧光把关键道具变成剧情线索。',
@@ -197,7 +197,7 @@ const WORK_SOURCE = [
   {
     id: 'w22',
     file: '车位/1.mp4',
-    title: '车位1',
+    title: '谁抢了我的车位',
     category: 'AI 短剧 · 停机坪场景',
     year: '2026',
     desc: '停机坪上的家族宣示：黑衣继承人的狮头胸针特写开场，台词是「Even the greatest Dons bow their heads」；随后机车冲上跑道，「Bellini 家族拥有一切」收尾。',
@@ -244,7 +244,32 @@ export const WORKS = WORK_SOURCE
 export const FEATURED = WORK_SOURCE.filter((w) => w.featured).sort(
   (a, b) => a.featured - b.featured
 )
-export const ARCHIVE = WORK_SOURCE.filter((w) => !w.featured)
+// 归档排序：标题末尾数字视为系列编号（「假死出逃3」→ 假死出逃 + 3，无数字记 0）
+// 同一系列排在一起、系列内按编号从小到大；系列之间按各自第一次出现的位置，顺序稳定
+const splitSeries = (title) => {
+  const m = title.match(/^(.*?)(\d+)$/)
+  return m ? { base: m[1], num: Number(m[2]) } : { base: title, num: 0 }
+}
+
+const sortBySeries = (list) => {
+  const firstIndex = new Map()
+  list.forEach((w, i) => {
+    const { base } = splitSeries(w.title)
+    if (!firstIndex.has(base)) firstIndex.set(base, i)
+  })
+
+  return list
+    .map((w, i) => ({ w, i, k: splitSeries(w.title) }))
+    .sort((a, b) => {
+      const ga = firstIndex.get(a.k.base)
+      const gb = firstIndex.get(b.k.base)
+      if (ga !== gb) return ga - gb
+      return a.k.num - b.k.num || a.i - b.i
+    })
+    .map((item) => item.w)
+}
+
+export const ARCHIVE = sortBySeries(WORK_SOURCE.filter((w) => !w.featured))
 
 // 首屏右侧轮播：5 条首屏级作品
 export const HERO_REEL = ['w17', 'w18', 'w19', 'w20', 'w21'].map((id) =>

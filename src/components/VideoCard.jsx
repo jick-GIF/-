@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import './VideoCard.css'
 
-export default function VideoCard({ work, index, variant = 'large', onOpen }) {
+export default function VideoCard({ work, index, variant = 'large', onOpen, showInfo = true }) {
   const vidRef = useRef(null)
   const [playing, setPlaying] = useState(false)
 
@@ -64,10 +64,12 @@ export default function VideoCard({ work, index, variant = 'large', onOpen }) {
         </span>
       </div>
 
-      <div className="vcard-info">
-        <span className="vcard-title">{work.title}</span>
-        <span className="vcard-cat">{work.category}</span>
-      </div>
+      {showInfo && (
+        <div className="vcard-info">
+          <span className="vcard-title">{work.title}</span>
+          <span className="vcard-cat">{work.category}</span>
+        </div>
+      )}
     </button>
   )
 }

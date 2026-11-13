@@ -29,14 +29,14 @@ export default function About() {
             </h2>
 
             <p className="about-desc">
-              2026 届内容创作者，3 年短视频创作与电商运营实战经验。
-              熟练用剪映 / Premiere 完成成片包装，掌握 PS 修图与 AE 动效，
+              2026 届应届毕业生，具备短视频剪辑、电商内容运营与 AIGC 影像的复合经验。
+              熟练用剪映完成剪辑包装，掌握 Premiere 基础操作，了解 PS / AE，
               熟悉抖音 / TikTok 的流量与完播逻辑。
               <br />
               <br />
-              现在专注 <strong className="grad-text">AIGC 影像工作流</strong>：
-              从剧本拆解、分镜设计、角色一致性控制，到 AI 生成、动态合成与字幕本地化，
-              独立完成一条竖屏短剧从 0 到 1 的全流程。
+              专注 <strong className="grad-text">竖屏 AI 短剧</strong>：
+              从分镜拆解、人物与资产生成、AI 视频生成，
+              到后期剪辑、配音配乐与成片交付，能独立跑完整条链路。
             </p>
 
             <div className="about-tags">

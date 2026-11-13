@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { HERO_BG, HERO_REEL, WORKS } from '../data/works.js'
 import './Hero.css'
 
-export default function Hero({ onOpen, onNav }) {
+export default function Hero({ onOpen, onNav, onResume }) {
   const [idx, setIdx] = useState(0)
   const current = HERO_REEL[idx]
 
@@ -55,6 +55,9 @@ export default function Hero({ onOpen, onNav }) {
           <div className="hero-actions rise rise-4">
             <button className="btn btn-primary" onClick={() => onNav('works')}>
               查看精选作品 ↓
+            </button>
+            <button className="btn btn-ghost" onClick={onResume}>
+              查看简历 ↗
             </button>
             <button className="btn btn-ghost" onClick={() => onNav('contact')}>
               联系我 →

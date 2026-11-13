@@ -15,7 +15,7 @@ export default function Navbar({ onNav }) {
         <button className="logo" onClick={() => onNav('hero')}>
           <span className="logo-mark">YK</span>
           <span className="logo-text">
-            YU <span className="muted">/</span> JINGKAI
+            JINGKAI <span className="muted">/</span> YU
           </span>
         </button>
 
