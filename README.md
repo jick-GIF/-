@@ -169,3 +169,8 @@ ffmpeg 位置：`C:\Users\于静凯\AppData\Local\Temp\ffmpeg_dl\ffmpeg-9.0.2-es
 
 - 精选屏去掉全部序号：删除 .feature-no（原「01」）与主推卡/缩略卡的 card-index 徽标，VideoCard 的 index 参数在精选屏不再传值。
 - 归档屏标题：删掉 h2「其余 21 条素材归档」，把眉标改为 rchive-kicker ARCHIVE + 大号 rchive-title 全部作品（clamp(30px,3vw,40px) / 700），右侧说明文案保留；归档内容高 542 → 507px。
+
+## 2026-11-14 年限口径
+
+- STATS 第 4 项由 3Y 改为 2Y（内容创作经验），About 统计卡随之变 2Y。
+- Hero 底部三项原本硬编码 3Y，现改为读取 STATS[3].num，以后只改 works.js 一处即可，两屏不会再打架。

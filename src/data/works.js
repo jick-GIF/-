@@ -282,5 +282,5 @@ export const STATS = [
   { num: '25', label: '部 AIGC 视觉成片', sub: '短剧 / 角色 / 场景' },
   { num: '5W+', label: '单条播放峰值', sub: '海外账号实测' },
   { num: '10+', label: '商业剪辑商单', sub: '信息流 / 影视解说' },
-  { num: '3Y', label: '内容创作经验', sub: '剪辑 + 运营' },
+  { num: '2Y', label: '内容创作经验', sub: '剪辑 + 运营' },
 ]

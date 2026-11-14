@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { HERO_BG, HERO_REEL, WORKS } from '../data/works.js'
+import { HERO_BG, HERO_REEL, STATS, WORKS } from '../data/works.js'
 import './Hero.css'
 
 export default function Hero({ onOpen, onNav, onResume }) {
@@ -76,7 +76,7 @@ export default function Hero({ onOpen, onNav, onResume }) {
             </div>
             <div className="meta-divider" />
             <div className="meta-item">
-              <span className="meta-num">3Y</span>
+              <span className="meta-num">{STATS[3].num}</span>
               <span className="meta-label">内容创作经验</span>
             </div>
           </div>
