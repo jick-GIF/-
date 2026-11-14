@@ -13,11 +13,9 @@ export default function Archive({ onOpen }) {
 
       <div className="page archive-inner">
         <div className="archive-head">
-          <div>
-            <div className="eyebrow">ARCHIVE · 全部作品</div>
-            <h2 className="h-section">
-              其余 <span className="grad-text">{ARCHIVE.length}</span> 条素材归档
-            </h2>
+          <div className="archive-head-left">
+            <span className="archive-kicker">ARCHIVE</span>
+            <h2 className="archive-title">全部作品</h2>
           </div>
           <p className="archive-desc muted">
             角色特写、场景空镜与风格化实验。

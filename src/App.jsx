@@ -7,7 +7,6 @@ import Archive from './components/Archive.jsx'
 import Skills from './components/Skills.jsx'
 import Contact from './components/Contact.jsx'
 import VideoModal from './components/VideoModal.jsx'
-import ResumeModal from './components/ResumeModal.jsx'
 
 const SECTIONS = [
   { id: 'hero', label: 'Home' },
@@ -22,7 +21,6 @@ function App() {
   const containerRef = useRef(null)
   const [active, setActive] = useState(0)
   const [selected, setSelected] = useState(null)
-  const [resumeOpen, setResumeOpen] = useState(false)
 
   useEffect(() => {
     const el = containerRef.current
@@ -42,19 +40,24 @@ function App() {
     if (idx >= 0) el.scrollTo({ top: idx * el.clientHeight, behavior: 'smooth' })
   }
 
+  // 简历改为独立页面：点击按钮新开一页 /resume.html，站内不再用弹层
+  const openResume = () => {
+    window.open('/resume.html', '_blank', 'noopener,noreferrer')
+  }
+
   return (
     <>
       <Navbar onNav={scrollTo} />
       <div
-        className={`scroll-container ${selected || resumeOpen ? 'locked' : ''}`}
+        className={`scroll-container ${selected ? 'locked' : ''}`}
         ref={containerRef}
       >
-        <Hero onOpen={setSelected} onNav={scrollTo} onResume={() => setResumeOpen(true)} />
+        <Hero onOpen={setSelected} onNav={scrollTo} onResume={openResume} />
         <About />
         <Works onOpen={setSelected} onNav={scrollTo} />
         <Archive onOpen={setSelected} />
         <Skills />
-        <Contact onResume={() => setResumeOpen(true)} />
+        <Contact onResume={openResume} />
       </div>
 
       <nav className="side-nav" aria-label="Section navigation">
@@ -73,8 +76,6 @@ function App() {
       {selected && (
         <VideoModal work={selected} onClose={() => setSelected(null)} />
       )}
-
-      {resumeOpen && <ResumeModal onClose={() => setResumeOpen(false)} />}
     </>
   )
 }

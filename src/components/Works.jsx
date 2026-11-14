@@ -19,12 +19,11 @@ export default function Works({ onOpen, onNav }) {
 
         <div className="feature-block">
           <div className="feature-main">
-            <VideoCard work={hero} index={0} onOpen={onOpen} />
+            <VideoCard work={hero} onOpen={onOpen} />
           </div>
 
           <div className="feature-side">
             <div className="feature-flag">
-              <span className="feature-no">01</span>
               <span className="feature-tag">本期主推</span>
             </div>
             <h3 className="feature-title">{hero.title}</h3>
@@ -43,11 +42,10 @@ export default function Works({ onOpen, onNav }) {
           </div>
 
           <div className="feature-thumbs">
-            {rest.map((w, i) => (
+            {rest.map((w) => (
               <VideoCard
                 key={w.id}
                 work={w}
-                index={i + 1}
                 onOpen={onOpen}
                 showInfo={false}
               />

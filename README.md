@@ -146,7 +146,7 @@ ffmpeg 位置：`C:\Users\于静凯\AppData\Local\Temp\ffmpeg_dl\ffmpeg-9.0.2-es
 ## 简历入口（2026-11-13）
 
 - 源文件：`D:\简历\简历-后期制作.docx`，用本机 Word（`WINWORD.EXE`）的 COM `ExportAsFixedFormat($dst, 17)` 导出 1 页 PDF（154,804 字节），排版与 Word 原稿一致。
-- 站内资源：只有 `public/resume-preview.png`（1667×2358，A4 比例 0.707）。PDF 已按要求从 public 删除，站内不提供下载/直链。
+- 站内资源：只有 `public/resume-preview.png`（1667×2358，A4 比例 0.707，478,180 字节，2026-11-14 换新简历）。PDF 已按要求从 public 删除，站内不提供下载/直链。
 - 页面尺寸：源 DOCX 原为 Letter（612×792pt），导出时在 Word 里临时改为 A4（595.3×842pt）后导出，内容重排后仍是 1 页；原 DOCX 未被改动。
 - 入口：首屏 Hero 第三个按钮「查看简历 ↗」、页尾 Contact 「查看简历 / RESUME ↗」，两者都打开 `ResumeModal` 全屏弹层。
 - 弹层内容：顶部信息条（于静凯 · 简历 / 后期制作 / 杭州 / 1 年经验）+「仅供在线查看」+ 可滚动的简历长图；长图按 A4 原始比例显示（760 × 1075，不压缩）；图片禁右键/禁拖拽；Esc 或点遮罩或 × 关闭。
@@ -158,3 +158,14 @@ ffmpeg 位置：`C:\Users\于静凯\AppData\Local\Temp\ffmpeg_dl\ffmpeg-9.0.2-es
 - 同一系列相邻排列、系列内按编号从小到大；系列之间的先后按该系列在 WORK_SOURCE 里第一次出现的位置，加新作品不会打乱既有顺序。
 - 排序在 src/data/works.js 的 sortBySeries() 里做，ARCHIVE 已按此排序导出；改标题文字即可影响分组。
 - 当前顺序：假死出逃1/2/3 → 美漫车位1-4 → 网恋1/2/2/3 → 黑手党女王/2/3 → 荣耀1/2 → 抢婚纱 → 水果车位 → 美漫 → 车位2 → 顶美1。
+
+## 2026-11-14 简历改为独立页面
+
+- 简历不再是弹层：src/components/ResumeModal.jsx / ResumeModal.css 已删除，App.jsx 里 esumeOpen 状态一并移除。
+- 新增静态页 public/resume.html（深色主题、顶栏「仅供在线查看」+「返回作品集 ←」、A4 长图最大 880px、禁右键/禁拖拽、页面无任何下载链接）。构建后自动出现在 dist/resume.html。
+- Hero「查看简历 ↗」与 Contact「查看简历 / RESUME ↗」改为 window.open('/resume.html', '_blank', 'noopener,noreferrer')，点击新开一页，不再锁滚动。
+
+## 2026-11-14 批注改动
+
+- 精选屏去掉全部序号：删除 .feature-no（原「01」）与主推卡/缩略卡的 card-index 徽标，VideoCard 的 index 参数在精选屏不再传值。
+- 归档屏标题：删掉 h2「其余 21 条素材归档」，把眉标改为 rchive-kicker ARCHIVE + 大号 rchive-title 全部作品（clamp(30px,3vw,40px) / 700），右侧说明文案保留；归档内容高 542 → 507px。
