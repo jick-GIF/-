@@ -29,7 +29,7 @@ export default function About() {
             </h2>
 
             <p className="about-desc">
-              2026 届应届毕业生，具备短视频剪辑、电商内容运营与 AIGC 影像的复合经验。
+              具备短视频剪辑、电商内容运营与 AIGC 影像的复合经验。
               熟练用剪映完成剪辑包装，掌握 Premiere 基础操作，了解 PS / AE，
               熟悉抖音 / TikTok 的流量与完播逻辑。
               <br />
